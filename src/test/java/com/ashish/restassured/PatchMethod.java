@@ -27,6 +27,5 @@ public class PatchMethod {
                 .then()
                 .statusCode(200)
                 .log().all();
-
     }
 }

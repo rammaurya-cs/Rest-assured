@@ -14,18 +14,17 @@ import static org.hamcrest.Matchers.equalTo;
 public class PostRequest2 {
 
     @Test
-    public void testCreateData(){
+    public void testCreateData() {
 
-        //prepare payload
-
+        //preparing payload
         EmployeePojo ep = new EmployeePojo();
         ep.setId(101);
         ep.setName("Ajay");
         ep.setSalary(12000);
 
-            EmployeePojo.Contacts contacts = new EmployeePojo.Contacts();
-            contacts.setMobile1(1234567890);
-            contacts.setMobile2(1234456789);
+        EmployeePojo.Contacts contacts = new EmployeePojo.Contacts();
+        contacts.setMobile1(1234567890);
+        contacts.setMobile2(1234456789);
 
         ep.setContacts(contacts);
 
@@ -34,7 +33,7 @@ public class PostRequest2 {
                 .contentType(ContentType.JSON)
                 .baseUri("https://dummy.restapiexample.com");
 
-        ResponseSpecification spec= new ResponseSpecBuilder()
+        ResponseSpecification spec = new ResponseSpecBuilder()
                 .expectContentType(ContentType.JSON)
                 .expectStatusCode(200)
                 .build();
@@ -56,6 +55,5 @@ public class PostRequest2 {
                 .response();
 
         System.out.println(response.asPrettyString());
-
     }
 }
