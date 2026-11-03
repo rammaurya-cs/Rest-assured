@@ -18,7 +18,7 @@ public class GetExample {
                 .statusCode(200)
                 .body("status", equalTo("success"))
                 .body("data.id",equalTo(1))
-                .body("data.employee_salary",equalTo("320800"))
+                .body("data.employee_salary",equalTo(320800))
                 .extract().response();
 
         System.out.println(rs.asString());
