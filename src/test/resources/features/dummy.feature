@@ -1,5 +1,5 @@
 @Dummy
-Feature : Dummy API Automation
+Feature: Dummy API Automation
 
   Scenario Outline: <TestCase>
     When Get One Employee Details
