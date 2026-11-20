@@ -1,4 +1,4 @@
-@Dummy
+@Dummy @Regression
 Feature: Dummy API Automation
 
   @GetOneEmployeeDetails
