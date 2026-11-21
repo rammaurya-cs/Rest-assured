@@ -1,1 +1,54 @@
-/target/
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+
+# Compiled Java files
+*.class
+
+# Logs
+*.log
+logs/
+
+# Test Reports
+Reports/
+reports/
+test-output/
+allure-results/
+allure-report/
+
+# IDE - IntelliJ
+.idea/
+*.iml
+out/
+
+# IDE - Eclipse
+.classpath
+.project
+.settings/
+.apt_generated/
+
+# VS Code
+.vscode/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Environment and sensitive configuration
+.env
+.env.*
+!.env.example
+
+# Newman reports (if generated in this project)
+newman-results/

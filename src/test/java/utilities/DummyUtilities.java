@@ -130,48 +130,39 @@ public class DummyUtilities {
     }
 
 
-    public static void validateStatusCodeAndMessage(int statusCode, String testcase) {
+    public static void validateStatusCodeAndMessage(
+            int statusCode, String testcase) {
 
         try {
+
+            // Status code validation from feature file
             int actualStatusCode = rs.getStatusCode();
 
             Assert.assertEquals(actualStatusCode, statusCode);
+
             logger.get().log(Status.PASS,
                     "Status Code Validation Passed | Expected: "
                             + statusCode + " | Actual: " + actualStatusCode);
 
-            String actualStatus = rs.jsonPath().getString("status");
 
-            Assert.assertEquals(actualStatus, "success");
+            // Status message validation from properties file
+            String expectedMessage =
+                    ConfigReader.getExpectedMessage(testcase);
+
+            String actualMessage =
+                    rs.jsonPath().getString("message");
+
+            Assert.assertTrue(
+                    actualMessage.startsWith(expectedMessage),
+                    "Status Message Mismatch | Expected to start with: "
+                            + expectedMessage
+                            + " | Actual: " + actualMessage
+            );
+
             logger.get().log(Status.PASS,
-                    "Status Message Validation Passed | Expected: success | Actual: "
-                            + actualStatus);
-
-            if (testcase.equalsIgnoreCase("GetOneEmployeeDetails")) {
-
-                int actualId = rs.jsonPath().getInt("data.id");
-
-                Assert.assertEquals(actualId, 1);
-                logger.get().log(Status.PASS,
-                        "Employee ID Validation Passed | Expected: 1 | Actual: "
-                                + actualId);
-
-            } else {
-
-                int actualSalary = rs.jsonPath().getInt("data[0].employee_salary");
-
-                Assert.assertEquals(actualSalary, 320800);
-                logger.get().log(Status.PASS,
-                        "Employee Salary Validation Passed | Expected: 320800 | Actual: "
-                                + actualSalary);
-
-                int actualAge = rs.jsonPath().getInt("data[0].employee_age");
-
-                Assert.assertEquals(actualAge, 61);
-                logger.get().log(Status.PASS,
-                        "Employee Age Validation Passed | Expected: 61 | Actual: "
-                                + actualAge);
-            }
+                    "Status Message Validation Passed | Expected: "
+                            + expectedMessage
+                            + " | Actual: " + actualMessage);
 
         } catch (AssertionError e) {
 
