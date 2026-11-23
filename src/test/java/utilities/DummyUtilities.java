@@ -109,20 +109,13 @@ public class DummyUtilities {
                     .append(APIFullPath).append("'");
 
             if (headers != null) {
-                headers.asList().forEach(
-                        h -> cURL.append(" -H '").append(h.getName()).append(": ")
-                                .append(h.getValue()).append("'")
-                );
+                headers.asList().forEach(h -> cURL.append(" -H '").append(h.getName()).append(": ").append(h.getValue()).append("'"));
             }
-
             if (payLoad != null && !httpMethod.equalsIgnoreCase("GET")) {
-                cURL.append(" -d '").append(payLoad.toString().replace("'", "\\'"))
-                        .append("'");
+                cURL.append(" -d '").append(payLoad.toString().replace("'", "\\'")).append("'");
             }
-
             GlobalVariables.threadCurl.set(cURL.toString());
             response.then().log().all();
-
             return response;
         } catch (Exception e) {
             throw new RuntimeException("Request failed " + e.getMessage());
