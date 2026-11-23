@@ -54,12 +54,10 @@ public class DummyUtilities {
             RequestSpecification request = given();
             String APIFullPath = getBaseURI() + endpoint;
             System.out.println(APIFullPath);
-
             // 1. Add headers
             if (headers != null) {
                 request.headers(headers);
             }
-
             // 2. Add query parameters
             if (queryParams != null && queryValues != null) {
                 if (queryParams.length != queryValues.length) {
@@ -69,17 +67,12 @@ public class DummyUtilities {
                     request.queryParam(queryParams[i].toString(), queryValues[i]);
                 }
             }
-
             // 3. Add request payload
             if (payLoad != null) {
                 request.body(payLoad);
             }
-
             // 4. Execute API request
-            Response response = request
-                    .when()
-                    .request(httpMethod.toUpperCase(), APIFullPath);
-
+            Response response = request.when().request(httpMethod.toUpperCase(), APIFullPath);
             // 5. Print request and response details
             System.out.println("========== " + title + " ==========");
             System.out.println("HTTP Method: " + httpMethod);
