@@ -28,16 +28,12 @@ public class ConfigReader {
     }
 
     public static String getExpectedMessage(String testcase) {
-
         String expectedMessage = properties.getProperty(testcase);
-
         if (expectedMessage == null || expectedMessage.trim().isEmpty()) {
             throw new RuntimeException(
-                    "Expected message not configured for testcase: "
-                            + testcase
+                    "Expected message not configured for testcase: " + testcase
             );
         }
-
         return expectedMessage.trim();
     }
 }
