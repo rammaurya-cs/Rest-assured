@@ -35,15 +35,12 @@ public class DummyUtilities {
 
     public static Headers setHeader(String[] keys, String[] values) {
         if (keys == null || values == null || keys.length != values.length) {
-            throw new IllegalArgumentException(
-                    "Header keys and values must have equal length");
+            throw new IllegalArgumentException("Header keys and values must have equal length");
         }
-
         Header[] headers = new Header[keys.length];
         for (int i = 0; i < keys.length; i++) {
             headers[i] = new Header(keys[i], values[i]);
         }
-
         return new Headers(headers);
 
     }
