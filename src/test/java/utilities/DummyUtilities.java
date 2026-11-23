@@ -62,16 +62,11 @@ public class DummyUtilities {
 
             // 2. Add query parameters
             if (queryParams != null && queryValues != null) {
-
                 if (queryParams.length != queryValues.length) {
-                    throw new IllegalArgumentException(
-                            "Query parameters and values must have equal length");
+                    throw new IllegalArgumentException("Query parameters and values must have equal length");
                 }
-
                 for (int i = 0; i < queryParams.length; i++) {
-                    request.queryParam(
-                            queryParams[i].toString(),
-                            queryValues[i]);
+                    request.queryParam(queryParams[i].toString(), queryValues[i]);
                 }
             }
 
@@ -96,8 +91,7 @@ public class DummyUtilities {
                 logger.get().log(Status.INFO, "<b>Request Headers : </b>" + headers.asList());
             }
             if (payLoad != null && !httpMethod.equalsIgnoreCase("GET")) {
-                logger.get().log(Status.INFO, "<b> Request Payload : </b><pre>" +
-                        payLoad.toPrettyString() + "</pre>");
+                logger.get().log(Status.INFO, "<b> Request Payload : </b><pre>" + payLoad.toPrettyString() + "</pre>");
             }
 
             logger.get().log(Status.INFO, String.format("<b>%s Response : </b><pre>%s</pre>", title, response.asPrettyString()));
