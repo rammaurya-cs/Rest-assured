@@ -5,6 +5,7 @@ import java.util.Properties;
 
 public class ConfigReader {
     private static final Properties properties = new Properties();
+
     static {
         try (InputStream input = ConfigReader.class.getClassLoader().getResourceAsStream("validation/api-validation.properties")) {
             if (input == null) {
@@ -19,9 +20,7 @@ public class ConfigReader {
     public static String getExpectedMessage(String testcase) {
         String expectedMessage = properties.getProperty(testcase);
         if (expectedMessage == null || expectedMessage.trim().isEmpty()) {
-            throw new RuntimeException(
-                    "Expected message not configured for testcase: " + testcase
-            );
+            throw new RuntimeException("Expected message not configured for testcase: " + testcase);
         }
         return expectedMessage.trim();
     }
