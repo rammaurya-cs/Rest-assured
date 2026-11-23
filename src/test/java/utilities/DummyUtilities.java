@@ -130,45 +130,19 @@ public class DummyUtilities {
     }
 
 
-    public static void validateStatusCodeAndMessage(
-            int statusCode, String testcase) {
-
+    public static void validateStatusCodeAndMessage(int statusCode, String testcase) {
         try {
-
             // Status code validation from feature file
             int actualStatusCode = rs.getStatusCode();
-
             Assert.assertEquals(actualStatusCode, statusCode);
-
-            logger.get().log(Status.PASS,
-                    "Status Code Validation Passed | Expected: "
-                            + statusCode + " | Actual: " + actualStatusCode);
-
+            logger.get().log(Status.PASS, "Status Code Validation Passed | Expected: " + statusCode + " | Actual: " + actualStatusCode);
 
             // Status message validation from properties file
-            String expectedMessage =
-                    ConfigReader.getExpectedMessage(testcase);
-
-            String actualMessage =
-                    rs.jsonPath().getString("message");
-
-            Assert.assertTrue(
-                    actualMessage.startsWith(expectedMessage),
-                    "Status Message Mismatch | Expected to start with: "
-                            + expectedMessage
-                            + " | Actual: " + actualMessage
-            );
-
-            logger.get().log(Status.PASS,
-                    "Status Message Validation Passed | Expected: "
-                            + expectedMessage
-                            + " | Actual: " + actualMessage);
-
-        } catch (AssertionError e) {
-
-            logger.get().log(Status.FAIL,
-                    "<b>API Validation Failed:</b> " + e.getMessage());
-
+            String expectedMessage = ConfigReader.getExpectedMessage(testcase);
+            String actualMessage = rs.jsonPath().getString("message");
+            Assert.assertTrue(actualMessage.startsWith(expectedMessage), "Status Message Mismatch | Expected to start with: " + expectedMessage + " | Actual: " + actualMessage);
+            logger.get().log(Status.PASS, "Status Message Validation Passed | Expected: " + expectedMessage + " | Actual: " + actualMessage);
+        } catch (AssertionError e) {logger.get().log(Status.FAIL, "<b>API Validation Failed:</b> " + e.getMessage());
             throw e;
         }
     }
