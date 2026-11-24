@@ -3,8 +3,7 @@ package hooks;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import io.cucumber.java.sl.In;
-import runner.Runner;
+import runner.TestRunner;
 import utilities.DummyUtilities;
 
 public class Hooks {
@@ -13,7 +12,7 @@ public class Hooks {
 
     @Before("@Regression")
     public void beforeMethod(Scenario scenario){
-        Runner.scenario.set(scenario);
+        TestRunner.scenario.set(scenario);
         DummyUtilities.testCaseDescriptorStart();
         count.set(count.get()+1);
     }
