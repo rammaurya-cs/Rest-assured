@@ -1,7 +1,6 @@
 package modules;
 
 import io.restassured.response.Response;
-import org.testng.Assert;
 import utilities.DummyUtilities;
 import utilities.Endpoint;
 import utilities.HeaderUtils;
