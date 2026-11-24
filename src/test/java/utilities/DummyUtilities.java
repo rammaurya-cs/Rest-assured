@@ -13,7 +13,7 @@ import org.apache.commons.io.FileUtils;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.Reporter;
-import runner.Runner;
+import runner.TestRunner;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +22,7 @@ import java.util.Collection;
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.head;
 import static modules.DummyModule.rs;
-import static runner.Runner.logger;
+import static runner.TestRunner.logger;
 
 public class DummyUtilities {
 
@@ -127,7 +127,7 @@ public class DummyUtilities {
 
     //=====================
     public static void testCaseDescriptorStart() {
-        Scenario scenario = Runner.scenario.get();
+        Scenario scenario = TestRunner.scenario.get();
         GlobalVariables.scenarioName.set(scenario);
 
         String testCaseDescription = scenario.getName();
@@ -139,28 +139,28 @@ public class DummyUtilities {
         ITestResult result = Reporter.getCurrentTestResult();
         result.setAttribute("testName", newName);
 
-        ExtentReports extentReports = Runner.getExtentReports();
+        ExtentReports extentReports = TestRunner.getExtentReports();
         ExtentTest testLogger = extentReports.createTest(testCaseDescription);
-        Runner.setLogger(testLogger);
+        TestRunner.setLogger(testLogger);
 
         try {
             Collection<String> tagList = scenario.getSourceTagNames();
             if (!tagList.isEmpty()) {
                 for (String tag : tagList) {
-                    Runner.getLogger().assignCategory(tag);
+                    TestRunner.getLogger().assignCategory(tag);
                 }
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
-//        LogUtils.infoLog(Runner.class," Suite started at "+ scenario.getName());
+//        LogUtils.infoLog(TestRunner.class," Suite started at "+ scenario.getName());
 
     }
 
     public static void endTest() {
-        Scenario scenario = Runner.getScenario();
-        ExtentTest logger = Runner.getLogger();
+        Scenario scenario = TestRunner.getScenario();
+        ExtentTest logger = TestRunner.getLogger();
 
         if (scenario.isFailed()) {
             if (logger != null) {
@@ -175,15 +175,15 @@ public class DummyUtilities {
     }
 
     public static void flushVariables() {
-        Runner.scenario.remove();
+        TestRunner.scenario.remove();
         logger.remove();
 //        GlobalVariables.payLoad.remove();
 //        GlobalVariables.endpoint.remove();
 //        GlobalVariables.headers.remove();
 //        GlobalVariables.response.remove();
 //        GlobalVariables.threadCurl.remove();
-        if (Runner.extentReports.get() != null) {
-            Runner.extentReports.get().flush();
+        if (TestRunner.extentReports.get() != null) {
+            TestRunner.extentReports.get().flush();
         }
     }
 
