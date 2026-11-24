@@ -25,7 +25,7 @@ import utilities.ReportUtils;
         monochrome = true,
         dryRun = false
 )
-public class Runner extends AbstractTestNGCucumberTests {
+public class TestRunner extends AbstractTestNGCucumberTests {
 
     public static ThreadLocal<ExtentReports> extentReports = new ThreadLocal<>();
     public static  ThreadLocal<ExtentTest> logger = new ThreadLocal<>();
