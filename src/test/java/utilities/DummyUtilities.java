@@ -118,7 +118,8 @@ public class DummyUtilities {
             String actualMessage = rs.jsonPath().getString("message");
             Assert.assertTrue(actualMessage.startsWith(expectedMessage), "Status Message Mismatch | Expected to start with: " + expectedMessage + " | Actual: " + actualMessage);
             logger.get().log(Status.PASS, "Status Message Validation Passed | Expected: " + expectedMessage + " | Actual: " + actualMessage);
-        } catch (AssertionError e) {logger.get().log(Status.FAIL, "<b>API Validation Failed:</b> " + e.getMessage());
+        } catch (AssertionError e) {
+            logger.get().log(Status.FAIL, "<b>API Validation Failed:</b> " + e.getMessage());
             throw e;
         }
     }

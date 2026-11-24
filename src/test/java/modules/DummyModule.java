@@ -11,7 +11,7 @@ public class DummyModule {
     public static Response rs;
 
     public static void getOneEmployeeDetailsRequest() {
-        rs = DummyUtilities.sendRequest("GET", Endpoint.getOneEmployee, HeaderUtils.headerForgetOneEmployee(),null,null,null,"Get One Employee");
+        rs = DummyUtilities.sendRequest("GET", Endpoint.getOneEmployee, HeaderUtils.headerForgetOneEmployee(), null, null, null, "Get One Employee");
     }
 
     public static void getAllEmployeeDetailsRequest() {
