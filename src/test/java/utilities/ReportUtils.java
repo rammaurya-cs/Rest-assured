@@ -12,6 +12,7 @@ import java.util.Date;
 
 public class ReportUtils {
 
+    //extent report initialization
     public static ExtentReports extentReportInitialization() {
         GlobalVariables.reportPath.set(System.getProperty("user.dir") + File.separator + "Reports" + File.separator
                 + "HTMLReports" + File.separator + "API-Automation-Report.html");
@@ -57,8 +58,7 @@ public class ReportUtils {
             }
 
         } else {
-            System.out.println("Extent Report does not exist: "
-                    + report.getAbsolutePath());
+            System.out.println("Extent Report does not exist: " + report.getAbsolutePath());
         }
     }
 
