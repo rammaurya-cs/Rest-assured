@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.util.Collection;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.head;
 import static modules.DummyModule.rs;
 import static runner.TestRunner.logger;
 
