@@ -7,9 +7,7 @@ import utilities.HeaderUtils;
 
 import static io.restassured.RestAssured.given;
 
-
 public class DummyModule {
-
     public static Response rs;
 
     public static void getOneEmployeeDetailsRequest() {
